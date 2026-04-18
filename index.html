@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mert Altıntaş · Portfolyo & Akademik Rehber</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(233,69,96,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0,119,182,0.25) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+  .intro {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 60px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: rgba(255,209,102,0.15);
+    border: 1px solid rgba(255,209,102,0.4);
+    border-radius: 50px;
+    color: #ffd166;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    font-weight: 900;
+  }
+  h1 span { color: #e94560; }
+  .subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+  }
+  .card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 45px 40px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 0;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.25);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  }
+  .card:hover::before { opacity: 0.15; }
+  .card > * { position: relative; z-index: 1; }
+  .card.cv { --bg: linear-gradient(135deg, #e94560, #d4af37); }
+  .card.phd { --bg: linear-gradient(135deg, #0077b6, #52b788); }
+  .card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+  .cv .card-icon { background: linear-gradient(135deg, #e94560, #d4af37); }
+  .phd .card-icon { background: linear-gradient(135deg, #0077b6, #52b788); }
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .card p {
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .card-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary {
+    background: white;
+    color: #0a0e27;
+  }
+  .btn-primary:hover { background: #ffd166; }
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  footer {
+    margin-top: 60px;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+  }
+  @media (max-width: 800px) {
+    h1 { font-size: 40px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <div class="badge">Portfolyo · 2026</div>
+    <h1>Mert <span>Altıntaş</span></h1>
+    <p class="subtitle">
+      Görsel İletişim Tasarımcısı &amp; Film Tasarımı Yüksek Lisans Araştırmacısı.
+      Aşağıdan özgeçmişi veya doktora programları rehberini açabilir, PDF olarak indirebilirsiniz.
+    </p>
+  </div>
+
+  <div class="cards">
+    <a href="cv.html" class="card cv">
+      <div class="card-icon">◈</div>
+      <h2>Özgeçmiş (CV)</h2>
+      <p>
+        Eğitim geçmişi, beceriler, iş deneyimi ve kişisel yetkinliklerin yer aldığı
+        modern, çift sütunlu profesyonel CV tasarımı.
+      </p>
+      <div class="card-actions">
+        <span class="btn btn-primary">Web Sayfası Aç →</span>
+        <span class="btn btn-outline">PDF Olarak İndir</span>
+      </div>
+    </a>
+
+    <a href="doktora-rehberi.html" class="card phd">
+      <div class="card-icon">◉</div>
+      <h2>Doktora Programları</h2>
+      <p>
+        Türkiye, Avrupa ve ABD'deki Görsel İletişim ve Film Tasarımı doktora programlarını
+        bölge bazlı renk kodlaması ile kart düzeninde sunan rehber.
+      </p>
+      <div class="card-actions">
+        <span class="btn btn-primary">Web Sayfası Aç →</span>
+        <span class="btn btn-outline">PDF Olarak İndir</span>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    Sayfa üzerinde sağ üstteki <strong>⬇ PDF Olarak İndir</strong> düğmesi ile
+    her iki belgeyi de PDF formatında kaydedebilirsiniz.
+  </footer>
+</body>
+</html>

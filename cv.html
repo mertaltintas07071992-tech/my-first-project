@@ -386,13 +386,66 @@
     .sidebar { padding: 40px 25px; }
   }
 
+  /* PDF İNDİR BUTONU */
+  .pdf-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #e94560 0%, #d4af37 100%);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(233,69,96,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(233,69,96,0.5);
+  }
+
   @media print {
-    body { background: white; padding: 0; }
-    .cv-container { box-shadow: none; border-radius: 0; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    html, body {
+      background: white !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    .cv-container {
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      min-height: 100vh !important;
+      page-break-inside: avoid;
+    }
+    .pdf-btn { display: none !important; }
+    .sidebar {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .section { page-break-inside: avoid; }
+    .timeline-item { page-break-inside: avoid; }
   }
 </style>
 </head>
 <body>
+  <button class="pdf-btn" onclick="window.print()">⬇ PDF Olarak İndir</button>
   <div class="cv-container">
     <!-- SIDEBAR -->
     <aside class="sidebar">
