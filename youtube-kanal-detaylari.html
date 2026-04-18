@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Smoke Jazz · Kanal Detayları</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --smoke: #0b0b0f;
+    --smoke-2: #16161d;
+    --smoke-3: #1e1e28;
+    --gold: #d4a24c;
+    --gold-bright: #f5cf6b;
+    --burgundy: #6b1d2c;
+    --amber: #c47128;
+    --cream: #f3e9d2;
+    --muted: #8b8794;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--smoke);
+    color: var(--cream);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 20%, rgba(212,162,76,0.06), transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(107,29,44,0.15), transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+  body > * { position: relative; z-index: 1; }
+
+  .pdf-btn {
+    position: fixed; top: 24px; right: 24px; z-index: 9999;
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    color: var(--smoke);
+    border: none; padding: 14px 24px; border-radius: 50px;
+    font-weight: 700; font-size: 13px; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 10px 30px rgba(212,162,76,0.4);
+  }
+
+  /* HEADER */
+  .channel-header {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(212,162,76,0.25) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 60%, rgba(107,29,44,0.4) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0a12 0%, #1a0e18 50%, #0a0a12 100%);
+    padding: 100px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .channel-header::after {
+    content: '';
+    position: absolute;
+    inset: 24px;
+    border: 1px solid rgba(212,162,76,0.2);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .channel-banner-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .channel-avatar {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #2a1a20, #0a0a12);
+    border: 4px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-weight: 900; font-size: 100px;
+    color: var(--gold);
+    box-shadow: 0 20px 60px rgba(212,162,76,0.3);
+    position: relative;
+  }
+  .channel-avatar::before {
+    content: '';
+    position: absolute; inset: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,162,76,0.3);
+  }
+  .channel-info .name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .channel-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    background: linear-gradient(180deg, var(--cream), var(--gold));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .verified {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold); color: var(--smoke);
+    font-weight: 900; font-size: 16px;
+  }
+  .channel-handle {
+    font-family: 'Inter', sans-serif;
+    color: var(--muted);
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .channel-stats {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .stat {
+    font-size: 14px;
+    color: var(--cream);
+  }
+  .stat strong { color: var(--gold); font-weight: 600; }
+  .channel-tagline {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--cream);
+    max-width: 600px;
+  }
+
+  /* SECTIONS */
+  section { padding: 70px 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 4px; text-transform: uppercase;
+    font-size: 12px; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .about-card {
+    background: var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.15);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .about-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .about-card p { color: var(--cream); font-size: 15px; }
+
+  /* DETAIL TABLE */
+  .detail-table {
+    background: var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.15);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .detail-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    padding: 22px 32px;
+    border-bottom: 1px solid rgba(212,162,76,0.1);
+    align-items: center;
+    gap: 20px;
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .detail-value {
+    color: var(--cream);
+    font-size: 15px;
+  }
+  .detail-value a { color: var(--gold-bright); text-decoration: none; }
+
+  /* TAGS */
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tag {
+    padding: 8px 16px;
+    background: rgba(212,162,76,0.1);
+    border: 1px solid rgba(212,162,76,0.3);
+    border-radius: 50px;
+    color: var(--gold-bright);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .pillar {
+    background: var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.15);
+    border-radius: 20px;
+    padding: 32px 26px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--burgundy));
+  }
+  .pillar-num {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .pillar-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* SCHEDULE */
+  .schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .day {
+    background: var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.15);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .day.featured {
+    background: linear-gradient(135deg, rgba(107,29,44,0.5) 0%, rgba(212,162,76,0.2) 100%);
+    border-color: var(--gold);
+  }
+  .day-name {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 4px;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .day-show {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--cream);
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .day-time {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* LINKS */
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .link-card {
+    background: var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.15);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+  }
+  .link-card:hover { border-color: var(--gold); }
+  .link-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold), var(--amber));
+    color: var(--smoke);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+  }
+  .link-platform { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .link-handle { color: var(--cream); font-weight: 600; font-size: 14px; }
+
+  /* VOICE */
+  .voice {
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(107,29,44,0.3) 0%, transparent 60%),
+      var(--smoke-2);
+    border: 1px solid rgba(212,162,76,0.2);
+    border-radius: 24px;
+    padding: 50px 40px;
+  }
+  .voice-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.5;
+    color: var(--cream);
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 30px;
+  }
+  .voice-quote::before {
+    content: '"';
+    position: absolute;
+    left: 0; top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .voice-attr {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+  .voice-item {
+    padding: 16px 0;
+    border-top: 1px solid rgba(212,162,76,0.2);
+  }
+  .voice-do { color: var(--gold-bright); font-weight: 600; margin-bottom: 4px; }
+  .voice-dont { color: var(--muted); font-size: 13px; }
+
+  /* CTA */
+  .cta {
+    padding: 80px 40px;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, rgba(107,29,44,0.15));
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 44px;
+    background: linear-gradient(180deg, var(--cream), var(--gold));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+  }
+  .cta-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid rgba(212,162,76,0.15);
+    color: var(--muted);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    letter-spacing: 2px;
+  }
+  footer strong { color: var(--gold); font-style: normal; letter-spacing: 4px; text-transform: uppercase; }
+
+  @media print {
+    @page { size: A4; margin: 10mm; }
+    html, body { background: white !important; color: #111 !important;
+      -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body::before { display: none; }
+    .pdf-btn { display: none !important; }
+    .channel-header { padding: 40px !important; }
+    section { padding: 30px 20px !important; page-break-inside: avoid; }
+    .about-card, .detail-row, .pillar, .day, .link-card, .voice { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 700px) {
+    .channel-banner-inner { grid-template-columns: 1fr; text-align: center; }
+    .channel-avatar { margin: 0 auto; }
+    .channel-name { font-size: 44px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .detail-row { grid-template-columns: 1fr; padding: 18px 22px; }
+    section { padding: 50px 20px; }
+    .section-title { font-size: 28px; }
+    .voice-quote { font-size: 20px; padding-left: 40px; }
+  }
+</style>
+</head>
+<body>
+<button class="pdf-btn" onclick="window.print()">⬇ PDF İndir</button>
+
+<!-- HEADER -->
+<header class="channel-header">
+  <div class="channel-banner-inner">
+    <div class="channel-avatar">B</div>
+    <div class="channel-info">
+      <div class="name-row">
+        <h1 class="channel-name">Black Smoke Jazz</h1>
+        <span class="verified" title="Doğrulanmış">✓</span>
+      </div>
+      <div class="channel-handle">@blacksmokejazz · youtube.com/@blacksmokejazz</div>
+      <p class="channel-tagline">Gece yarısı caz, duman ve melankoli. Kuratörlük ile seçilmiş sıcak, sade, zamansız bir caz yolculuğu.</p>
+      <div class="channel-stats">
+        <div class="stat"><strong>15K</strong> abone (hedef Q1)</div>
+        <div class="stat"><strong>125+</strong> video planı</div>
+        <div class="stat"><strong>2026</strong> lansman yılı</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <div class="section-label">— About the Channel —</div>
+    <h2 class="section-title">Kanal Hakkında</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Kısa Açıklama</h3>
+        <p>
+          Black Smoke Jazz, gece yarısının sessizliğine sığınanlar için kuratörlüğünü üstlendiğimiz
+          bir caz kanalıdır. Vintage plaklardan, modern lo-fi caz üretimlerine ve özgün piyano /
+          saksafon oturumlarına kadar uzanan sıcak, sade bir ses evreni sunar.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>Uzun Açıklama</h3>
+        <p>
+          Her video; duman altı bir barın, yağmur sonrası asfaltın ya da yalnız bir kahve fincanının
+          hissini taşır. Amacımız; kulağa estetik, ruha iyi gelen, zamansız bir caz arşivi kurmaktır.
+          Sessiz geceleri seven herkes için bir sığınak, tasarımcılar ve yazarlar için arka plan,
+          caz tutkunları için küçük bir koleksiyondur.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS TABLE -->
+<section>
+  <div class="container">
+    <div class="section-label">— Channel Metadata —</div>
+    <h2 class="section-title">Kanal Bilgileri</h2>
+    <div class="detail-table">
+      <div class="detail-row">
+        <div class="detail-label">Kanal Adı</div>
+        <div class="detail-value">Black Smoke Jazz</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Kanal Kullanıcı Adı</div>
+        <div class="detail-value">@blacksmokejazz</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Kategori</div>
+        <div class="detail-value">Müzik · Ambient / Jazz / Lo-fi</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Dil</div>
+        <div class="detail-value">Türkçe (başlık + açıklama) · Uluslararası (müzik)</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Ülke</div>
+        <div class="detail-value">Türkiye</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Yayın Sıklığı</div>
+        <div class="detail-value">Haftada 2 video · Salı &amp; Cuma</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Video Uzunluğu</div>
+        <div class="detail-value">30 – 90 dk (uzun kuratöryel set)</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Hedef Kitle</div>
+        <div class="detail-value">25 – 45 yaş · müzik sever · tasarımcı · yazar · gece çalışanı · cafe işletmeleri</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">İletişim</div>
+        <div class="detail-value">contact@blacksmokejazz.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT PILLARS -->
+<section>
+  <div class="container">
+    <div class="section-label">— Content Pillars —</div>
+    <h2 class="section-title">İçerik Sütunları</h2>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <h3 class="pillar-title">Midnight Sessions</h3>
+        <p class="pillar-desc">Gece yarısı için derlenmiş saksafon, kontrbas ve davul üçlüleri. Uzun, sade setler.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <h3 class="pillar-title">Rainy Night Jazz</h3>
+        <p class="pillar-desc">Yağmur sesleri eşliğinde lo-fi caz karışımları. Uyku, çalışma, dinlenme için.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <h3 class="pillar-title">Coffee &amp; Jazz</h3>
+        <p class="pillar-desc">Sabah kahvesi ve öğle molaları için sıcak bossa ve kafe caz seansları.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <h3 class="pillar-title">Piano Rooms</h3>
+        <p class="pillar-desc">Solo piyano caz kayıtları. Mumışığı oturumları, oda kayıtları, sıcak akustik.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <h3 class="pillar-title">Vintage Vinyl</h3>
+        <p class="pillar-desc">Nadide plaklardan yapılmış seçkiler. Crackle, warm sound, nostaljik arşiv.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">06</div>
+        <h3 class="pillar-title">Live in the Studio</h3>
+        <p class="pillar-desc">Konuk müzisyenlerle stüdyo kayıtları. Tek çekim performanslar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section>
+  <div class="container">
+    <div class="section-label">— Weekly Schedule —</div>
+    <h2 class="section-title">Yayın Takvimi</h2>
+    <div class="schedule">
+      <div class="day">
+        <div class="day-name">PAZARTESİ</div>
+        <div class="day-show">—</div>
+        <div class="day-time">Dinlenme</div>
+      </div>
+      <div class="day featured">
+        <div class="day-name">SALI</div>
+        <div class="day-show">Rainy Nights</div>
+        <div class="day-time">23:00</div>
+      </div>
+      <div class="day">
+        <div class="day-name">ÇARŞAMBA</div>
+        <div class="day-show">Shorts</div>
+        <div class="day-time">Reel / Teaser</div>
+      </div>
+      <div class="day">
+        <div class="day-name">PERŞEMBE</div>
+        <div class="day-show">Piano Rooms</div>
+        <div class="day-time">00:00</div>
+      </div>
+      <div class="day featured">
+        <div class="day-name">CUMA</div>
+        <div class="day-show">Midnight Sax</div>
+        <div class="day-time">22:00</div>
+      </div>
+      <div class="day">
+        <div class="day-name">CUMARTESİ</div>
+        <div class="day-show">Vintage Vinyl</div>
+        <div class="day-time">20:00</div>
+      </div>
+      <div class="day">
+        <div class="day-name">PAZAR</div>
+        <div class="day-show">Coffee &amp; Jazz</div>
+        <div class="day-time">09:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGS / KEYWORDS -->
+<section>
+  <div class="container">
+    <div class="section-label">— SEO &amp; Discovery —</div>
+    <h2 class="section-title">Anahtar Kelimeler</h2>
+    <div class="tag-cloud">
+      <span class="tag">jazz</span>
+      <span class="tag">smooth jazz</span>
+      <span class="tag">late night jazz</span>
+      <span class="tag">coffee jazz</span>
+      <span class="tag">piano jazz</span>
+      <span class="tag">saxophone</span>
+      <span class="tag">lofi jazz</span>
+      <span class="tag">ambient jazz</span>
+      <span class="tag">rainy night music</span>
+      <span class="tag">study music</span>
+      <span class="tag">vintage vinyl</span>
+      <span class="tag">relaxing jazz</span>
+      <span class="tag">bossa nova</span>
+      <span class="tag">bebop</span>
+      <span class="tag">midnight music</span>
+      <span class="tag">smoky jazz</span>
+      <span class="tag">jazz playlist</span>
+      <span class="tag">jazz oturumu</span>
+      <span class="tag">caz müziği</span>
+      <span class="tag">rahatlatıcı müzik</span>
+      <span class="tag">uyku müziği</span>
+      <span class="tag">çalışma müziği</span>
+      <span class="tag">kahve müziği</span>
+      <span class="tag">gece müziği</span>
+      <span class="tag">blacksmokejazz</span>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE / TONE -->
+<section>
+  <div class="container">
+    <div class="section-label">— Brand Voice —</div>
+    <h2 class="section-title">Ses Tonu</h2>
+    <div class="voice">
+      <blockquote class="voice-quote">
+        Sade. Sıcak. Sessiz değil ama uslu. Black Smoke Jazz ağır konuşmaz — fısıldar.
+        Her başlık kısa bir şiir, her açıklama duman gibi incedir.
+      </blockquote>
+      <div class="voice-attr">— Brand Voice Guidelines</div>
+      <div class="voice-grid">
+        <div class="voice-item">
+          <div class="voice-do">✓ Şiirsel başlık</div>
+          <div class="voice-dont">✗ Clickbait büyük harf</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-do">✓ Sıcak metafor</div>
+          <div class="voice-dont">✗ Emoji yağmuru</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-do">✓ Mekan hissi</div>
+          <div class="voice-dont">✗ Pazarlama dili</div>
+        </div>
+        <div class="voice-item">
+          <div class="voice-do">✓ Kısa ve derin</div>
+          <div class="voice-dont">✗ Uzun ve yüzeysel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL LINKS -->
+<section>
+  <div class="container">
+    <div class="section-label">— Where to Find Us —</div>
+    <h2 class="section-title">Sosyal Bağlantılar</h2>
+    <div class="link-grid">
+      <a class="link-card" href="#">
+        <div class="link-icon">▶</div>
+        <div><div class="link-platform">YouTube</div><div class="link-handle">@blacksmokejazz</div></div>
+      </a>
+      <a class="link-card" href="#">
+        <div class="link-icon">◉</div>
+        <div><div class="link-platform">Instagram</div><div class="link-handle">@blacksmokejazz</div></div>
+      </a>
+      <a class="link-card" href="#">
+        <div class="link-icon">♪</div>
+        <div><div class="link-platform">Spotify</div><div class="link-handle">Black Smoke Jazz</div></div>
+      </a>
+      <a class="link-card" href="#">
+        <div class="link-icon">♫</div>
+        <div><div class="link-platform">Apple Music</div><div class="link-handle">Black Smoke Jazz</div></div>
+      </a>
+      <a class="link-card" href="#">
+        <div class="link-icon">𝕏</div>
+        <div><div class="link-platform">Twitter / X</div><div class="link-handle">@blacksmokejazz</div></div>
+      </a>
+      <a class="link-card" href="#">
+        <div class="link-icon">✉</div>
+        <div><div class="link-platform">E-posta</div><div class="link-handle">contact@blacksmokejazz.com</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2 class="cta-title">— turn down the lights, pour a drink —</h2>
+    <p class="cta-tag">Welcome to Black Smoke Jazz · Est. 2026</p>
+  </div>
+</section>
+
+<footer>
+  <strong>Black Smoke Jazz</strong><br><br>
+  Channel Documentation · 2026 Edition · All visuals designed for web + PDF export
+</footer>
+
+</body>
+</html>

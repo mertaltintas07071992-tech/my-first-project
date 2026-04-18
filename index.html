@@ -58,6 +58,25 @@
     max-width: 1100px;
     width: 100%;
   }
+  .section-heading {
+    max-width: 1100px;
+    width: 100%;
+    margin: 60px 0 20px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #d4a24c;
+    font-size: 28px;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    border-left: 3px solid #d4a24c;
+  }
+  .card.jazz {
+    --bg: linear-gradient(135deg, #6b1d2c, #d4a24c);
+    background: linear-gradient(135deg, rgba(107,29,44,0.15) 0%, rgba(212,162,76,0.1) 100%);
+    border-color: rgba(212,162,76,0.2);
+  }
+  .jazz .card-icon { background: linear-gradient(135deg, #6b1d2c, #d4a24c); }
+  .card.jazz .card-icon { color: #f3e9d2; }
   .card {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(20px);
@@ -153,7 +172,7 @@
     <h1>Mert <span>Altıntaş</span></h1>
     <p class="subtitle">
       Görsel İletişim Tasarımcısı &amp; Film Tasarımı Yüksek Lisans Araştırmacısı.
-      Aşağıdan özgeçmişi veya doktora programları rehberini açabilir, PDF olarak indirebilirsiniz.
+      Aşağıdan özgeçmiş, doktora rehberi ve Black Smoke Jazz YouTube kanal kitini açabilir, her birini PDF olarak indirebilirsiniz.
     </p>
   </div>
 
@@ -185,9 +204,41 @@
     </a>
   </div>
 
+  <div class="section-heading">— Black Smoke Jazz · YouTube Channel Kit —</div>
+
+  <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+    <a href="youtube-kanal.html" class="card jazz">
+      <div class="card-icon">◈</div>
+      <h2>Marka Kimliği</h2>
+      <p>Logo varyasyonları, renk paleti, tipografi, banner ve profil fotoğrafı tasarımları.</p>
+      <div class="card-actions">
+        <span class="btn btn-primary">Aç →</span>
+        <span class="btn btn-outline">PDF</span>
+      </div>
+    </a>
+    <a href="youtube-thumbnails.html" class="card jazz">
+      <div class="card-icon">▶</div>
+      <h2>5 Video Thumbnail</h2>
+      <p>İlk sezon için özel tasarlanmış 5 adet video kapak görseli · 1280×720 · 16:9.</p>
+      <div class="card-actions">
+        <span class="btn btn-primary">Aç →</span>
+        <span class="btn btn-outline">PDF</span>
+      </div>
+    </a>
+    <a href="youtube-kanal-detaylari.html" class="card jazz">
+      <div class="card-icon">♪</div>
+      <h2>Kanal Detayları</h2>
+      <p>Kanal hakkında, meta veriler, içerik sütunları, yayın takvimi, SEO etiketleri, ses tonu.</p>
+      <div class="card-actions">
+        <span class="btn btn-primary">Aç →</span>
+        <span class="btn btn-outline">PDF</span>
+      </div>
+    </a>
+  </div>
+
   <footer>
-    Sayfa üzerinde sağ üstteki <strong>⬇ PDF Olarak İndir</strong> düğmesi ile
-    her iki belgeyi de PDF formatında kaydedebilirsiniz.
+    Tüm sayfalarda sağ üstteki <strong>⬇ PDF İndir</strong> düğmesi ile
+    belgeleri PDF formatında kaydedebilirsiniz.
   </footer>
 </body>
 </html>
