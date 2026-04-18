@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Görsel İletişim Tasarımcısı</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --gold: #d4af37;
+    --light: #f5f5f7;
+    --gray: #6b7280;
+    --dark-gray: #374151;
+    --bg: #fafafa;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: var(--primary);
+    line-height: 1.6;
+  }
+
+  .cv-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    min-height: 1200px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 50px 35px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .profile-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #e94560 0%, #d4af37 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 5px solid rgba(255,255,255,0.1);
+    box-shadow: 0 15px 40px rgba(233,69,96,0.4);
+    z-index: 2;
+  }
+
+  .profile-photo-inner {
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 900;
+    color: #d4af37;
+    letter-spacing: -3px;
+  }
+
+  .profile-photo-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sidebar-section {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 40px;
+  }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(212,175,55,0.3);
+    letter-spacing: 1px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .contact-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: rgba(233,69,96,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e94560;
+    font-size: 14px;
+  }
+
+  .skill-item {
+    margin-bottom: 18px;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .skill-name { color: white; font-weight: 500; }
+  .skill-percent { color: #d4af37; font-weight: 600; }
+
+  .skill-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e94560 0%, #d4af37 100%);
+    border-radius: 3px;
+    animation: fillBar 1.5s ease-out forwards;
+  }
+
+  @keyframes fillBar {
+    from { width: 0; }
+  }
+
+  .language-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 13.5px;
+  }
+
+  .language-item:last-child { border-bottom: none; }
+
+  .language-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .dot.active { background: #d4af37; }
+
+  /* MAIN */
+  .main {
+    padding: 55px 50px;
+    background: white;
+  }
+
+  .header-block {
+    margin-bottom: 45px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+
+  .header-block::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--primary);
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+
+  .name .accent {
+    color: var(--accent);
+  }
+
+  .title {
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .about-text {
+    margin-top: 20px;
+    font-size: 14.5px;
+    color: var(--dark-gray);
+    line-height: 1.8;
+  }
+
+  .section {
+    margin-bottom: 45px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 8px;
+    height: 28px;
+    background: linear-gradient(180deg, #e94560 0%, #d4af37 100%);
+    border-radius: 4px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 28px;
+    border-left: 2px solid #e5e7eb;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(233,69,96,0.1);
+  }
+
+  .timeline-date {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary) 0%, #0f3460 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-heading {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .timeline-sub {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .timeline-desc {
+    font-size: 13.5px;
+    color: var(--dark-gray);
+    line-height: 1.7;
+  }
+
+  .timeline-desc ul {
+    list-style: none;
+    margin-top: 6px;
+  }
+
+  .timeline-desc li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* SOFT SKILLS */
+  .soft-skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .soft-skill {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+    font-size: 13.5px;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: transform 0.2s;
+  }
+
+  .soft-skill:hover {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 900px) {
+    .cv-container {
+      grid-template-columns: 1fr;
+    }
+    .name { font-size: 42px; }
+    .main { padding: 40px 25px; }
+    .sidebar { padding: 40px 25px; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .cv-container { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="cv-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="profile-photo">
+        <div class="profile-photo-inner">MA</div>
+      </div>
+      <div class="profile-photo-label">Profil Fotoğrafı</div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">İletişim</h3>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>mert.altintas@email.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">☎</div>
+          <div>+90 555 123 45 67</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◉</div>
+          <div>Gaziantep, Türkiye</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">in</div>
+          <div>linkedin.com/in/mertaltintas</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◎</div>
+          <div>behance.net/mertaltintas</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Yetenekler</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Adobe Photoshop</span>
+            <span class="skill-percent">95%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Adobe Illustrator</span>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Adobe Premiere Pro</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">After Effects</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">DaVinci Resolve</span>
+            <span class="skill-percent">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Tipografi & Grafik</span>
+            <span class="skill-percent">93%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 93%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Fotoğrafçılık</span>
+            <span class="skill-percent">88%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Video Kurgu & Renklendirme</span>
+            <span class="skill-percent">87%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" style="width: 87%"></div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Diller</h3>
+        <div class="language-item">
+          <span>Türkçe</span>
+          <div class="language-dots">
+            <div class="dot active"></div><div class="dot active"></div>
+            <div class="dot active"></div><div class="dot active"></div>
+            <div class="dot active"></div>
+          </div>
+        </div>
+        <div class="language-item">
+          <span>İngilizce</span>
+          <div class="language-dots">
+            <div class="dot active"></div><div class="dot active"></div>
+            <div class="dot active"></div><div class="dot active"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="language-item">
+          <span>Almanca</span>
+          <div class="language-dots">
+            <div class="dot active"></div><div class="dot active"></div>
+            <div class="dot"></div><div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="header-block">
+        <h1 class="name">Mert <span class="accent">Altıntaş</span></h1>
+        <div class="title">Görsel İletişim Tasarımcısı · Film Tasarımcısı</div>
+        <p class="about-text">
+          Görsel İletişim Tasarımı lisans eğitimim ve Film Tasarımı alanındaki tezli yüksek lisans
+          çalışmalarımla; görsel anlatı, hareketli grafik ve sinematik estetik arasında köprü kuran
+          yaratıcı tasarım çözümleri üretiyorum. Disiplinlerarası yaklaşımla marka kimliği, kısa film
+          ve editöryel projelerde araştırmacı bir tasarımcı olarak çalışıyorum.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Eğitim</h2>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2023 — DEVAM EDİYOR</div>
+          <div class="timeline-heading">Tezli Yüksek Lisans — Film Tasarımı</div>
+          <div class="timeline-sub">Gaziantep Üniversitesi · Güzel Sanatlar Enstitüsü</div>
+          <div class="timeline-desc">
+            Sinematik görsel anlatı, senaryo yapısı ve post-prodüksiyon üzerine araştırma odaklı
+            akademik çalışmalar. Tez konusu: Türkiye'de bağımsız kısa filmlerde görsel tasarım
+            dilinin evrimi.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2017 — 2021</div>
+          <div class="timeline-heading">Lisans — Görsel İletişim Tasarımı</div>
+          <div class="timeline-sub">Yakın Doğu Üniversitesi · İletişim Fakültesi · KKTC</div>
+          <div class="timeline-desc">
+            Grafik tasarım, tipografi, fotoğrafçılık, hareketli grafik ve dijital iletişim
+            alanlarında kapsamlı eğitim. GPA: 3.62 / 4.00 (Yüksek Onur).
+            <ul>
+              <li>Mezuniyet projesi: "Şehirlerin Sessiz Dili" başlıklı görsel kimlik sistemi</li>
+              <li>Uluslararası Öğrenci Tasarım Yarışması finalisti (2020)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">İş Deneyimi</h2>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2023 — DEVAM</div>
+          <div class="timeline-heading">Sanat Yönetmeni & Kreatif Tasarımcı</div>
+          <div class="timeline-sub">Atölye 27 Yaratıcı Ajans · Gaziantep</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Marka kimliği geliştirme, kampanya görsel yönetimi ve reklam filmi prodüksiyonu</li>
+              <li>20+ kurumsal müşteri için bütüncül görsel strateji tasarımı</li>
+              <li>Genç tasarımcılardan oluşan 4 kişilik ekip liderliği</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2021 — 2023</div>
+          <div class="timeline-heading">Grafik Tasarımcı & Video Editör</div>
+          <div class="timeline-sub">Nova Medya Prodüksiyon · İstanbul</div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Sosyal medya içerikleri, motion graphic ve kısa reklam filmleri üretimi</li>
+              <li>Premiere Pro ve After Effects ile 150+ video projesi tamamlandı</li>
+              <li>Kurumsal kimlik projelerinde logo, tipografi ve editöryel tasarım</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2020 — 2021</div>
+          <div class="timeline-heading">Freelance Tasarımcı & Fotoğrafçı</div>
+          <div class="timeline-sub">Bağımsız Projeler · Kuzey Kıbrıs</div>
+          <div class="timeline-desc">
+            Yerel kültür sanat dergileri için editöryel tasarım, sokak fotoğrafçılığı sergileri ve
+            küçük işletmeler için marka kimliği projeleri.
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Kişisel Beceriler</h2>
+        <div class="soft-skills">
+          <div class="soft-skill">Yaratıcı Problem Çözme</div>
+          <div class="soft-skill">Ekip Liderliği</div>
+          <div class="soft-skill">Estetik Duyarlılık</div>
+          <div class="soft-skill">Zaman Yönetimi</div>
+          <div class="soft-skill">Anlatı Tasarımı</div>
+          <div class="soft-skill">Araştırma & Analiz</div>
+          <div class="soft-skill">Detay Odaklılık</div>
+          <div class="soft-skill">Sunum Becerisi</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
