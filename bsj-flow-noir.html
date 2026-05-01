@@ -1,271 +1,318 @@
-<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BLACK SMOKE JAZZ — YouTube Channel</title><style>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLACK SMOKE JAZZ — YouTube Channel</title>
+<style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0a;color:#fff;font-family:Roboto,Arial,sans-serif;padding:30px 20px;min-height:100vh}
-.container{max-width:1280px;margin:0 auto}
-.section-label{font-size:.6rem;letter-spacing:6px;color:#c9a84c;margin-bottom:16px;font-family:Arial,sans-serif;opacity:.7}
-.banner-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.7)}
-.banner-card canvas{display:block;width:100%;height:auto;background:#000}
-</style></head>
+body{background:#0a0a0a;color:#e0e0e0;font-family:'Segoe UI',sans-serif;min-height:100vh}
+.yt-header{background:#111;border-bottom:1px solid #222;padding:10px 24px;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:100}
+.yt-logo{color:#c9a84c;font-size:18px;font-weight:900;letter-spacing:3px}
+.yt-search{flex:1;max-width:480px;display:flex}
+.yt-search input{flex:1;background:#1a1a1a;border:1px solid #333;color:#e0e0e0;padding:8px 16px;border-radius:20px 0 0 20px;outline:none;font-size:13px}
+.yt-search button{background:#222;border:1px solid #333;border-left:none;color:#c9a84c;padding:8px 14px;border-radius:0 20px 20px 0;cursor:pointer}
+.channel-wrapper{max-width:1280px;margin:0 auto}
+.banner-container{position:relative;width:100%;height:350px;overflow:hidden;background:#0a0a0a}
+#bannerCanvas{width:100%;height:350px;display:block}
+.channel-info{background:#111;padding:16px 28px;display:flex;align-items:center;gap:20px;border-bottom:1px solid #222}
+.avatar-canvas{border-radius:50%;border:3px solid #c9a84c}
+.channel-meta h1{color:#fff;font-size:26px;font-weight:900;letter-spacing:4px}
+.channel-meta .sub-info{color:#888;font-size:13px;margin-top:4px}
+.channel-meta .sub-info span{color:#c9a84c;margin-right:12px}
+.sub-btn{background:#c9a84c;color:#0a0a0a;border:none;padding:10px 22px;border-radius:20px;font-weight:800;font-size:13px;cursor:pointer;letter-spacing:1px;margin-left:auto;text-transform:uppercase}
+.channel-tabs{background:#111;display:flex;border-bottom:1px solid #222;padding:0 28px}
+.channel-tabs button{background:none;border:none;color:#888;padding:14px 18px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:1px;border-bottom:3px solid transparent;transition:all .2s;text-transform:uppercase}
+.channel-tabs button.active{color:#c9a84c;border-bottom-color:#c9a84c}
+.content-area{padding:28px}
+.sec-title{color:#c9a84c;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid #1e1e1e}
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
+.video-card{cursor:pointer;transition:transform .2s}
+.video-card:hover{transform:translateY(-4px)}
+.thumb-wrap{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:16/9;background:#111}
+.thumb-wrap canvas{width:100%;height:100%;display:block}
+.duration-badge{position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.85);color:#fff;font-size:11px;padding:2px 6px;border-radius:3px;font-weight:700}
+.vid-info{padding:8px 0 0}
+.vid-info h3{color:#ddd;font-size:13px;font-weight:600;line-height:1.4;margin-bottom:3px}
+.vid-info .vmeta{color:#555;font-size:11px}
+.vid-info .vmeta span{color:#8b1a1a}
+.noir-feature{background:linear-gradient(135deg,#0d0d0d,#111,#0d0d0d);border:1px solid #1e1e1e;border-radius:12px;padding:28px;margin-bottom:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.feat-canvas-wrap canvas{width:100%;border-radius:8px;display:block}
+.feat-text h2{color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:5px;margin-bottom:10px}
+.feat-text p{color:#777;font-size:13px;line-height:1.9;margin-bottom:14px}
+.feat-play{background:#8b1a1a;color:#fff;border:none;padding:11px 26px;border-radius:4px;font-weight:700;font-size:13px;cursor:pointer;letter-spacing:2px;display:inline-flex;align-items:center;gap:8px}
+.shorts-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:36px}
+.short-card{cursor:pointer}
+.short-thumb{aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#111;position:relative}
+.short-thumb canvas{width:100%;height:100%}
+.short-info h4{color:#ddd;font-size:12px;margin-top:6px;font-weight:600}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about-card{background:#111;border:1px solid #1e1e1e;border-radius:8px;padding:20px}
+.about-card h3{color:#c9a84c;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.about-card p,.about-card ul{color:#777;font-size:13px;line-height:1.8}
+.about-card ul{list-style:none}
+.about-card ul li::before{content:"◆ ";color:#c9a84c}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.stat-box{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:14px;text-align:center}
+.stat-box .num{color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:1px}
+.stat-box .lbl{color:#555;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+</style>
+</head>
 <body>
-<div class="container">
-<div class="section-label">— CHANNEL BANNER —</div>
-<div class="banner-card"><canvas id="banner" width="1280" height="350"></canvas></div>
+<div class="yt-header">
+  <div class="yt-logo">▶ BLACK SMOKE JAZZ</div>
+  <div class="yt-search"><input type="text" placeholder="Search..."><button>🔍</button></div>
 </div>
-
+<div class="channel-wrapper">
+  <div class="banner-container"><canvas id="bannerCanvas" width="1280" height="350"></canvas></div>
+  <div class="channel-info">
+    <canvas id="avatarCanvas" class="avatar-canvas" width="80" height="80"></canvas>
+    <div class="channel-meta">
+      <h1>BLACK SMOKE JAZZ</h1>
+      <div class="sub-info"><span>128K subscribers</span><span>87 videos</span><span>14.8M views</span></div>
+    </div>
+    <button class="sub-btn">Subscribe</button>
+  </div>
+  <div class="channel-tabs">
+    <button class="active">Home</button><button>Videos</button><button>Shorts</button><button>Playlists</button><button>About</button>
+  </div>
+  <div class="content-area">
+    <div class="noir-feature">
+      <div class="feat-canvas-wrap"><canvas id="featCanvas" width="640" height="360"></canvas></div>
+      <div class="feat-text">
+        <h2>MIDNIGHT SESSIONS</h2>
+        <p>Smoke rises through window-lit silence. Jazz breathes. The city sleeps. She doesn't.</p>
+        <p>Our latest noir-jazz film — 47 minutes of uninterrupted atmosphere.</p>
+        <button class="feat-play">▶ PLAY NOW</button>
+      </div>
+    </div>
+    <div class="sec-title">Latest Uploads</div>
+    <div class="video-grid" id="videoGrid"></div>
+    <div class="sec-title">Shorts</div>
+    <div class="shorts-row" id="shortsRow"></div>
+    <div class="sec-title">About This Channel</div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="num">128K</div><div class="lbl">Subscribers</div></div>
+      <div class="stat-box"><div class="num">14.8M</div><div class="lbl">Total Views</div></div>
+      <div class="stat-box"><div class="num">87</div><div class="lbl">Videos</div></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card"><h3>About</h3><p>BLACK SMOKE JAZZ is a noir jazz atmosphere channel. Cinematic visuals, smoky rooms, jazz improvisation.</p></div>
+      <div class="about-card"><h3>Playlists</h3><ul><li>Midnight Sessions — 12 videos</li><li>Smoke & Piano — 8 videos</li><li>Noir Lounge — 15 videos</li><li>Late Night Jazz — 22 videos</li></ul></div>
+    </div>
+  </div>
+</div>
 <script>
-const GOLD='#c9a84c',DARK='#1a1a1a',BG='#0a0a0a';
-
-class Smoke{
-  constructor(W,H,ox,oy){this.W=W;this.H=H;this.ox=ox;this.oy=oy;this.reset(true);}
-  reset(spread){
-    this.x=this.ox+(Math.random()-0.5)*16;
-    this.y=this.oy+(spread?-Math.random()*this.H*0.5:0);
-    this.vx=(Math.random()-0.5)*0.35;
-    this.vy=-0.25-Math.random()*0.5;
-    this.r=8+Math.random()*28;
-    this.life=180+Math.random()*220;
-    this.age=spread?Math.random()*this.life:0;
-    this.ma=0.18+Math.random()*0.28;
-    this.osc=Math.random()*Math.PI*2;
-    this.osa=0.0015+Math.random()*0.003;
+function drawNoirWoman(ctx,w,h,t){
+  ctx.save();
+  ctx.fillStyle='#0a0a0a';
+  ctx.fillRect(0,0,w,h);
+  // Bokeh
+  for(let i=0;i<28;i++){
+    const bx=(i*137.5)%w,by=(i*89.3)%h,br=4+(i%5)*3;
+    const a=0.06+0.1*Math.sin(t*0.5+i);
+    ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);
+    ctx.fillStyle=`rgba(200,200,200,${a})`;ctx.fill();
   }
-  step(t){this.age++;this.osc+=0.022;this.x+=this.vx+Math.sin(this.osc+t*this.osa)*0.5;this.y+=this.vy;this.r+=0.25;this.vy*=0.997;}
-  alive(){return this.age<this.life&&this.y>-50;}
-  draw(c){
-    const t=this.age/this.life,a=Math.sin(t*Math.PI)*this.ma;
-    if(a<=0)return;
-    const g=c.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r);
-    g.addColorStop(0,'rgba(220,220,220,'+(a*0.65)+')');
-    g.addColorStop(0.5,'rgba(170,170,170,'+(a*0.3)+')');
-    g.addColorStop(1,'rgba(0,0,0,0)');
-    c.fillStyle=g;c.beginPath();c.arc(this.x,this.y,this.r,0,Math.PI*2);c.fill();
-  }
+  // Window grid
+  ctx.strokeStyle='rgba(70,70,70,0.4)';ctx.lineWidth=1.5;
+  const gw=w*0.45,gh=h*0.88,gx=w*0.53,gy=h*0.04;
+  for(let c=0;c<=5;c++){ctx.beginPath();ctx.moveTo(gx+c*gw/5,gy);ctx.lineTo(gx+c*gw/5,gy+gh);ctx.stroke();}
+  for(let r=0;r<=3;r++){ctx.beginPath();ctx.moveTo(gx,gy+r*gh/3);ctx.lineTo(gx+gw,gy+r*gh/3);ctx.stroke();}
+  // Chiaroscuro
+  const lg=ctx.createRadialGradient(w*0.15,h*0.3,5,w*0.3,h*0.5,h*0.6);
+  lg.addColorStop(0,'rgba(200,200,200,0.12)');lg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=lg;ctx.fillRect(0,0,w,h);
+  const cx=w*0.3,cy=h*0.52,sc=h/350;
+  // Body / dress
+  ctx.beginPath();
+  ctx.moveTo(cx-28*sc,cy+18*sc);
+  ctx.bezierCurveTo(cx-32*sc,cy+75*sc,cx-36*sc,cy+130*sc,cx-30*sc,cy+175*sc);
+  ctx.lineTo(cx+30*sc,cy+175*sc);
+  ctx.bezierCurveTo(cx+36*sc,cy+130*sc,cx+32*sc,cy+75*sc,cx+28*sc,cy+18*sc);
+  ctx.fillStyle='#0e0e0e';ctx.fill();
+  // Chest/skin
+  ctx.beginPath();ctx.ellipse(cx,cy+4*sc,30*sc,14*sc,0,0,Math.PI);
+  ctx.fillStyle='rgba(165,155,145,0.7)';ctx.fill();
+  // V neck
+  ctx.beginPath();ctx.moveTo(cx-20*sc,cy+16*sc);ctx.lineTo(cx,cy+34*sc);ctx.lineTo(cx+20*sc,cy+16*sc);
+  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=1.5;ctx.stroke();
+  // Straps
+  ctx.lineWidth=2.5;ctx.strokeStyle='#181818';
+  ctx.beginPath();ctx.moveTo(cx-17*sc,cy+8*sc);ctx.lineTo(cx-13*sc,cy-20*sc);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx+17*sc,cy+8*sc);ctx.lineTo(cx+13*sc,cy-20*sc);ctx.stroke();
+  // Neck
+  ctx.beginPath();ctx.ellipse(cx,cy-12*sc,7*sc,10*sc,0,0,Math.PI*2);
+  ctx.fillStyle='rgba(168,158,148,0.9)';ctx.fill();
+  // Face
+  ctx.beginPath();ctx.ellipse(cx,cy-46*sc,23*sc,29*sc,0,0,Math.PI*2);
+  ctx.fillStyle='rgba(172,162,152,0.95)';ctx.fill();
+  // Face shadow right
+  const fs=ctx.createLinearGradient(cx-23*sc,0,cx+23*sc,0);
+  fs.addColorStop(0,'rgba(255,255,255,0.06)');fs.addColorStop(0.5,'rgba(0,0,0,0)');fs.addColorStop(1,'rgba(0,0,0,0.45)');
+  ctx.beginPath();ctx.ellipse(cx,cy-46*sc,23*sc,29*sc,0,0,Math.PI*2);ctx.fillStyle=fs;ctx.fill();
+  // Eyes
+  ctx.beginPath();ctx.ellipse(cx-9*sc,cy-49*sc,5.5*sc,3*sc,-0.1,0,Math.PI*2);ctx.fillStyle='#191919';ctx.fill();
+  ctx.beginPath();ctx.ellipse(cx+9*sc,cy-49*sc,5*sc,2.8*sc,0.1,0,Math.PI*2);ctx.fillStyle='#191919';ctx.fill();
+  // Eyebrows
+  ctx.lineWidth=2;ctx.strokeStyle='#2a2a2a';
+  ctx.beginPath();ctx.moveTo(cx-16*sc,cy-58*sc);ctx.bezierCurveTo(cx-11*sc,cy-61*sc,cx-5*sc,cy-59*sc,cx-3*sc,cy-56*sc);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx+4*sc,cy-56*sc);ctx.bezierCurveTo(cx+7*sc,cy-59*sc,ctx,cx-61*sc,cx+16*sc,cy-58*sc);ctx.stroke();
+  // Lips
+  ctx.beginPath();
+  ctx.moveTo(cx-9*sc,cy-31*sc);
+  ctx.bezierCurveTo(cx-5*sc,cy-33*sc,cx+5*sc,cy-33*sc,cx+9*sc,cy-31*sc);
+  ctx.bezierCurveTo(cx+5*sc,cy-29*sc,cx-5*sc,cy-29*sc,cx-9*sc,cy-31*sc);
+  ctx.fillStyle='rgba(130,55,55,0.9)';ctx.fill();
+  // Hair - short wavy
+  ctx.beginPath();
+  ctx.moveTo(cx-23*sc,cy-58*sc);
+  ctx.bezierCurveTo(cx-30*sc,cy-82*sc,cx-18*sc,cy-92*sc,cx-8*sc,cy-86*sc);
+  ctx.bezierCurveTo(cx-2*sc,cy-96*sc,cx+8*sc,cy-90*sc,cx+14*sc,cy-84*sc);
+  ctx.bezierCurveTo(cx+24*sc,cy-92*sc,cx+32*sc,cy-80*sc,cx+23*sc,cy-62*sc);
+  ctx.bezierCurveTo(cx+27*sc,cy-54*sc,cx+29*sc,cy-44*sc,cx+22*sc,cy-40*sc);
+  ctx.bezierCurveTo(cx+26*sc,cy-32*sc,cx+24*sc,cy-22*sc,cx+18*sc,cy-20*sc);
+  ctx.lineTo(cx-18*sc,cy-20*sc);
+  ctx.bezierCurveTo(cx-24*sc,cy-22*sc,cx-26*sc,cy-32*sc,cx-22*sc,cy-40*sc);
+  ctx.bezierCurveTo(cx-29*sc,cy-44*sc,cx-27*sc,cy-54*sc,cx-23*sc,cy-58*sc);
+  ctx.fillStyle='rgba(45,40,36,0.97)';ctx.fill();
+  // Hair wavy detail
+  ctx.strokeStyle='rgba(60,55,50,0.8)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(cx-20*sc,cy-60*sc);ctx.bezierCurveTo(cx-15*sc,cy-70*sc,cx-5*sc,cy-72*sc,cx,cy-68*sc);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx,cy-68*sc);ctx.bezierCurveTo(cx+5*sc,cy-74*sc,cx+15*sc,cy-72*sc,cx+20*sc,cy-64*sc);ctx.stroke();
+  // Left arm
+  ctx.beginPath();ctx.moveTo(cx-26*sc,cy+18*sc);
+  ctx.bezierCurveTo(cx-38*sc,cy+48*sc,cx-50*sc,cy+76*sc,cx-54*sc,cy+88*sc);
+  ctx.lineWidth=10*sc;ctx.strokeStyle='rgba(165,155,145,0.85)';ctx.lineCap='round';ctx.stroke();
+  // Cigarette
+  ctx.beginPath();ctx.moveTo(cx-54*sc,cy+86*sc);ctx.lineTo(cx-68*sc,cy+70*sc);
+  ctx.lineWidth=2.5;ctx.strokeStyle='rgba(215,205,185,0.9)';ctx.stroke();
+  // Ember glow
+  const ea=0.55+0.45*Math.sin(t*3.2);
+  ctx.beginPath();ctx.arc(cx-68*sc,cy+70*sc,3*sc,0,Math.PI*2);
+  ctx.fillStyle=`rgba(255,110,20,${ea})`;ctx.fill();
+  ctx.beginPath();ctx.arc(cx-68*sc,cy+70*sc,5*sc,0,Math.PI*2);
+  ctx.fillStyle=`rgba(255,150,50,${ea*0.3})`;ctx.fill();
+  ctx.restore();
 }
-
-function drawWindowGrid(c,W,H,offX,gridW){
-  c.save();c.strokeStyle='rgba(150,150,150,0.16)';c.lineWidth=1;
-  const cols=8,colW=gridW/cols;
-  for(let i=0;i<=cols;i++){const x=offX+i*colW;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke();}
-  const rows=5,rowH=H/rows;
-  for(let i=0;i<=rows;i++){const y=i*rowH;c.beginPath();c.moveTo(offX,y);c.lineTo(offX+gridW,y);c.stroke();}
-  c.restore();
-}
-
-function drawBokeh(c,W,H,seed){
-  c.save();c.globalCompositeOperation='screen';
-  for(let i=0;i<25;i++){
-    const x=(Math.sin(seed*0.7+i*1.3)*0.5+0.5)*W;
-    const y=(Math.cos(seed*0.5+i*0.9)*0.5+0.5)*H;
-    const r=6+Math.sin(seed+i)*3+Math.random()*22;
-    const a=0.06+Math.random()*0.18;
-    const g=c.createRadialGradient(x,y,0,x,y,r);
-    g.addColorStop(0,'rgba(255,255,255,'+a+')');
-    g.addColorStop(0.45,'rgba(220,220,220,'+(a*0.5)+')');
-    g.addColorStop(1,'rgba(0,0,0,0)');
-    c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill();
-  }
-  c.restore();
-}
-
-function drawNoirWoman(c,cx,cy,s){
-  c.save();c.translate(cx,cy);c.scale(s,s);
-  const skin=c.createLinearGradient(-150,0,150,0);
-  skin.addColorStop(0,'#e2e2e2');skin.addColorStop(0.4,'#9c9c9c');
-  skin.addColorStop(0.7,'#3a3a3a');skin.addColorStop(1,'#1a1a1a');
-
-  // hair back
-  c.fillStyle='#080808';
-  c.beginPath();
-  c.moveTo(-110,-160);
-  c.bezierCurveTo(-180,-180,-200,-100,-180,-30);
-  c.bezierCurveTo(-170,10,-160,40,-150,80);
-  c.bezierCurveTo(-130,70,-115,40,-105,10);
-  c.lineTo(105,10);
-  c.bezierCurveTo(115,40,130,70,150,80);
-  c.bezierCurveTo(160,40,170,10,180,-30);
-  c.bezierCurveTo(200,-100,180,-180,110,-160);
-  c.bezierCurveTo(80,-220,40,-235,0,-235);
-  c.bezierCurveTo(-40,-235,-80,-220,-110,-160);
-  c.closePath();c.fill();
-
-  // face
-  c.fillStyle=skin;
-  c.beginPath();c.ellipse(0,-100,90,120,0,0,Math.PI*2);c.fill();
-  c.save();c.globalCompositeOperation='multiply';
-  const jaw=c.createLinearGradient(-30,0,90,0);
-  jaw.addColorStop(0,'rgba(255,255,255,1)');jaw.addColorStop(1,'rgba(40,40,40,1)');
-  c.fillStyle=jaw;c.beginPath();c.ellipse(0,-100,90,120,0,0,Math.PI*2);c.fill();c.restore();
-
-  // hair front waves
-  c.fillStyle='#0a0a0a';
-  c.beginPath();
-  c.moveTo(-95,-180);
-  c.bezierCurveTo(-70,-200,-30,-210,10,-200);
-  c.bezierCurveTo(40,-195,75,-180,95,-160);
-  c.bezierCurveTo(85,-150,60,-145,30,-150);
-  c.bezierCurveTo(-10,-160,-50,-160,-95,-150);c.closePath();c.fill();
-  c.beginPath();c.moveTo(-100,-150);c.bezierCurveTo(-120,-100,-130,-40,-110,20);
-  c.bezierCurveTo(-115,-30,-110,-90,-95,-130);c.closePath();c.fill();
-  c.beginPath();c.moveTo(100,-150);c.bezierCurveTo(120,-100,130,-40,110,20);
-  c.bezierCurveTo(115,-30,110,-90,95,-130);c.closePath();c.fill();
-
-  // eyebrows
-  c.strokeStyle='#0a0a0a';c.lineWidth=4;c.lineCap='round';
-  c.beginPath();c.moveTo(-50,-128);c.quadraticCurveTo(-30,-138,-12,-130);c.stroke();
-  c.beginPath();c.moveTo(12,-130);c.quadraticCurveTo(30,-138,50,-128);c.stroke();
-
-  // eyes
-  c.fillStyle='rgba(0,0,0,0.4)';
-  c.beginPath();c.ellipse(-30,-110,16,7,0,0,Math.PI*2);c.fill();
-  c.beginPath();c.ellipse(30,-110,16,7,0,0,Math.PI*2);c.fill();
-  c.fillStyle='#0a0a0a';
-  c.beginPath();c.ellipse(-30,-110,9,4,0,0,Math.PI*2);c.fill();
-  c.beginPath();c.ellipse(30,-110,9,4,0,0,Math.PI*2);c.fill();
-  c.strokeStyle='#0a0a0a';c.lineWidth=1.5;
-  for(let i=-3;i<=3;i++){
-    c.beginPath();c.moveTo(-30+i*4,-114);c.lineTo(-30+i*4,-119);c.stroke();
-    c.beginPath();c.moveTo(30+i*4,-114);c.lineTo(30+i*4,-119);c.stroke();
-  }
-
-  // nose
-  c.strokeStyle='rgba(0,0,0,0.3)';c.lineWidth=2;
-  c.beginPath();c.moveTo(2,-95);c.quadraticCurveTo(8,-75,5,-60);c.stroke();
-  c.fillStyle='rgba(0,0,0,0.2)';
-  c.beginPath();c.ellipse(0,-58,6,3,0,0,Math.PI*2);c.fill();
-
-  // lips
-  c.fillStyle='#1a1a1a';
-  c.beginPath();
-  c.moveTo(-22,-32);c.quadraticCurveTo(-10,-42,0,-36);c.quadraticCurveTo(10,-42,22,-32);
-  c.quadraticCurveTo(15,-22,0,-22);c.quadraticCurveTo(-15,-22,-22,-32);c.closePath();c.fill();
-  c.fillStyle='rgba(255,255,255,0.18)';
-  c.beginPath();c.ellipse(-12,-34,7,2,0,0,Math.PI*2);c.fill();
-
-  // neck
-  c.fillStyle=skin;
-  c.beginPath();c.moveTo(-32,10);c.lineTo(-40,80);c.lineTo(40,80);c.lineTo(32,10);c.closePath();c.fill();
-  c.save();c.globalCompositeOperation='multiply';
-  const ns=c.createLinearGradient(-40,0,40,0);
-  ns.addColorStop(0,'rgba(255,255,255,1)');ns.addColorStop(1,'rgba(60,60,60,1)');
-  c.fillStyle=ns;c.beginPath();c.moveTo(-32,10);c.lineTo(-40,80);c.lineTo(40,80);c.lineTo(32,10);c.closePath();c.fill();c.restore();
-
-  // shoulders
-  c.fillStyle=skin;
-  c.beginPath();
-  c.moveTo(-180,80);c.bezierCurveTo(-140,75,-90,80,-40,80);c.lineTo(40,80);
-  c.bezierCurveTo(90,80,140,75,180,80);c.lineTo(180,180);c.lineTo(-180,180);c.closePath();c.fill();
-  c.save();c.globalCompositeOperation='multiply';
-  const ss=c.createLinearGradient(-180,0,180,0);
-  ss.addColorStop(0,'rgba(255,255,255,1)');ss.addColorStop(1,'rgba(30,30,30,1)');
-  c.fillStyle=ss;
-  c.beginPath();c.moveTo(-180,80);c.bezierCurveTo(-140,75,-90,80,-40,80);c.lineTo(40,80);
-  c.bezierCurveTo(90,80,140,75,180,80);c.lineTo(180,180);c.lineTo(-180,180);c.closePath();c.fill();c.restore();
-
-  // black dress V-neck
-  c.fillStyle='#040404';
-  c.beginPath();c.moveTo(-180,180);c.lineTo(180,180);c.lineTo(180,400);c.lineTo(-180,400);c.closePath();c.fill();
-  c.beginPath();
-  c.moveTo(-90,140);c.lineTo(0,200);c.lineTo(90,140);
-  c.bezierCurveTo(120,150,150,165,180,175);c.lineTo(180,180);c.lineTo(-180,180);c.lineTo(-180,175);
-  c.bezierCurveTo(-150,165,-120,150,-90,140);c.closePath();c.fill();
-
-  // spaghetti straps
-  c.strokeStyle='#040404';c.lineWidth=8;c.lineCap='round';
-  c.beginPath();c.moveTo(-65,80);c.lineTo(-90,140);c.stroke();
-  c.beginPath();c.moveTo(65,80);c.lineTo(90,140);c.stroke();
-
-  // collarbone
-  c.strokeStyle='rgba(0,0,0,0.2)';c.lineWidth=2;
-  c.beginPath();c.moveTo(-70,110);c.quadraticCurveTo(-30,118,0,115);c.quadraticCurveTo(30,118,70,110);c.stroke();
-
-  // LEFT HAND with cigarette (positioned left side of woman, raised)
-  // hand silhouette
-  c.fillStyle=skin;
-  c.beginPath();
-  c.moveTo(-140,80);c.lineTo(-170,30);c.lineTo(-200,-30);
-  c.bezierCurveTo(-215,-50,-220,-30,-210,-10);
-  c.bezierCurveTo(-200,15,-180,40,-160,70);c.lineTo(-140,90);c.closePath();c.fill();
-  // fingers holding cigarette
-  c.fillStyle='#9a9a9a';
-  c.beginPath();c.ellipse(-205,-35,8,12,0.4,0,Math.PI*2);c.fill();
-  c.beginPath();c.ellipse(-195,-25,7,11,0.4,0,Math.PI*2);c.fill();
-  // cigarette (white thin line)
-  c.strokeStyle='#f5f5f5';c.lineWidth=3;c.lineCap='round';
-  c.beginPath();c.moveTo(-220,-50);c.lineTo(-180,-15);c.stroke();
-  // cigarette tip glow
-  c.fillStyle='#ff6a3a';c.beginPath();c.arc(-220,-50,3.5,0,Math.PI*2);c.fill();
-  c.fillStyle='rgba(255,180,100,0.5)';c.beginPath();c.arc(-220,-50,8,0,Math.PI*2);c.fill();
-  c.restore();
-}
-
-function grain(c,W,H,density,alpha){
-  c.save();c.globalCompositeOperation='overlay';
-  for(let i=0;i<density;i++){
-    const v=Math.random()*255|0;
-    c.fillStyle='rgba('+v+','+v+','+v+','+(alpha*Math.random())+')';
-    c.fillRect(Math.random()*W|0,Math.random()*H|0,1,1);
-  }
-  c.restore();
-}
-
-function vignette(c,W,H,s){
-  const g=c.createRadialGradient(W/2,H/2,Math.min(W,H)*0.3,W/2,H/2,Math.max(W,H)*0.7);
-  g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,'+s+')');
-  c.fillStyle=g;c.fillRect(0,0,W,H);
-}
-
-function keyLight(c,W,H){
-  c.save();c.globalCompositeOperation='screen';
-  const g=c.createRadialGradient(W*0.25,H*0.4,0,W*0.25,H*0.4,W*0.6);
-  g.addColorStop(0,'rgba(255,255,255,0.16)');
-  g.addColorStop(0.5,'rgba(200,200,200,0.05)');
-  g.addColorStop(1,'rgba(0,0,0,0)');
-  c.fillStyle=g;c.fillRect(0,0,W,H);c.restore();
-  c.save();c.globalCompositeOperation='multiply';
-  const s=c.createLinearGradient(W*0.5,0,W,0);
-  s.addColorStop(0,'rgba(255,255,255,1)');s.addColorStop(1,'rgba(35,35,35,1)');
-  c.fillStyle=s;c.fillRect(0,0,W,H);c.restore();
-}
-
-class Banner{
-  constructor(){
-    this.cv=document.getElementById('banner');this.c=this.cv.getContext('2d');
-    this.W=1280;this.H=350;this.t=0;this.smoke=[];
-    // cigarette tip approximate position (in canvas coords, after woman scale)
-    // woman cx=W*0.65 cy=H*0.7 scale=0.7 -> tip is at translate(-220,-50) scaled
-    const wcx=this.W*0.65,wcy=this.H*0.7,sc=0.7;
-    const ox=wcx-220*sc,oy=wcy-50*sc;
-    for(let i=0;i<40;i++)this.smoke.push(new Smoke(this.W,this.H,ox,oy));
+class SmokeParticle{
+  constructor(ox,oy){this.ox=ox;this.oy=oy;this.reset(Math.random());}
+  reset(life){
+    this.x=this.ox+(Math.random()-.5)*10;this.y=this.oy;
+    this.vx=(Math.random()-.5)*0.45;this.vy=-(0.35+Math.random()*0.65);
+    this.r=4+Math.random()*7;this.life=life;this.maxLife=3+Math.random()*2.5;
+    this.alpha=0.1+Math.random()*0.14;
   }
   update(){
-    const c=this.c,W=this.W,H=this.H;this.t++;
-    c.fillStyle='#000';c.fillRect(0,0,W,H);
-    const bg=c.createLinearGradient(0,0,W,0);
-    bg.addColorStop(0,'#0a0a0a');bg.addColorStop(0.5,'#1a1a1a');bg.addColorStop(1,'#080808');
-    c.fillStyle=bg;c.fillRect(0,0,W,H);
-    drawWindowGrid(c,W,H,W*0.32,W*0.6);
-    drawBokeh(c,W,H,this.t*0.01);
-    drawNoirWoman(c,W*0.65,H*0.7,0.7);
-    keyLight(c,W,H);
-    for(let i=this.smoke.length-1;i>=0;i--){
-      this.smoke[i].step(this.t);
-      if(!this.smoke[i].alive())this.smoke[i].reset(false);
-    }
-    c.save();c.globalCompositeOperation='screen';
-    for(const s of this.smoke)s.draw(c);
-    c.restore();
-    c.save();c.fillStyle=GOLD;c.font='900 italic 64px Georgia, serif';c.textAlign='left';c.textBaseline='middle';
-    c.shadowColor='rgba(201,168,76,0.5)';c.shadowBlur=18;
-    c.fillText('BLACK SMOKE',W*0.05,H*0.36);
-    c.fillText('JAZZ',W*0.05,H*0.6);c.restore();
-    c.save();c.strokeStyle=GOLD;c.globalAlpha=0.5;c.lineWidth=2;
-    c.beginPath();c.moveTo(W*0.05,H*0.8);c.lineTo(W*0.3,H*0.8);c.stroke();c.restore();
-    vignette(c,W,H,0.55);
-    grain(c,W,H,Math.floor(W*H/700),0.18);
+    this.life+=0.016;this.x+=this.vx+Math.sin(this.life*2.3)*0.35;
+    this.y+=this.vy;this.r+=0.07;
+    if(this.life>=this.maxLife)this.reset(0);
+  }
+  draw(ctx){
+    const p=this.life/this.maxLife,a=this.alpha*(1-p)*Math.min(p*5,1);
+    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(175,175,175,${a})`;ctx.fill();
   }
 }
-
-const banner=new Banner();
-function loop(){banner.update();requestAnimationFrame(loop);}
+function makeSmoke(ox,oy,n){return Array.from({length:n},()=>new SmokeParticle(ox,oy));}
+function updateSmoke(ps){ps.forEach(p=>p.update());}
+function drawSmoke(ctx,ps){ps.forEach(p=>p.draw(ctx));}
+function filmGrain(ctx,w,h,i){
+  const d=ctx.getImageData(0,0,w,h),px=d.data;
+  for(let j=0;j<px.length;j+=4){const n=(Math.random()-.5)*i;px[j]=Math.max(0,Math.min(255,px[j]+n));px[j+1]=Math.max(0,Math.min(255,px[j+1]+n));px[j+2]=Math.max(0,Math.min(255,px[j+2]+n));}
+  ctx.putImageData(d,0,0);
+}
+// Banner
+const BC=document.getElementById('bannerCanvas'),bx=BC.getContext('2d');
+const bSmoke=makeSmoke(BC.width*.22,BC.height*.8,45);
+function drawBanner(t){
+  bx.clearRect(0,0,BC.width,BC.height);
+  drawNoirWoman(bx,BC.width,BC.height,t);
+  updateSmoke(bSmoke);drawSmoke(bx,bSmoke);
+  bx.save();
+  bx.font=`900 ${Math.floor(BC.height*.11)}px Georgia,serif`;
+  bx.textAlign='right';bx.fillStyle='rgba(201,168,76,0.92)';
+  bx.fillText('BLACK SMOKE JAZZ',BC.width-36,BC.height*.27);
+  bx.font=`400 ${Math.floor(BC.height*.042)}px Segoe UI,sans-serif`;
+  bx.fillStyle='rgba(201,168,76,0.5)';
+  bx.fillText('NOIR JAZZ ATMOSPHERE',BC.width-36,BC.height*.39);
+  bx.restore();
+  filmGrain(bx,BC.width,BC.height,16);
+}
+// Avatar
+const AC=document.getElementById('avatarCanvas'),ax=AC.getContext('2d');
+ax.fillStyle='#0a0a0a';ax.beginPath();ax.arc(40,40,40,0,Math.PI*2);ax.fill();
+ax.fillStyle='#c9a84c';ax.font='bold 20px Georgia';ax.textAlign='center';ax.textBaseline='middle';ax.fillText('BSJ',40,40);
+// Featured
+const FC=document.getElementById('featCanvas'),fx=FC.getContext('2d');
+const fSmoke=makeSmoke(FC.width*.3,FC.height*.85,28);
+function drawFeat(t){
+  fx.clearRect(0,0,FC.width,FC.height);drawNoirWoman(fx,FC.width,FC.height,t+1.7);
+  updateSmoke(fSmoke);drawSmoke(fx,fSmoke);
+  fx.beginPath();fx.arc(FC.width/2,FC.height/2,34,0,Math.PI*2);fx.fillStyle='rgba(201,168,76,0.12)';fx.fill();
+  fx.beginPath();fx.moveTo(FC.width/2-12,FC.height/2-17);fx.lineTo(FC.width/2+18,FC.height/2);fx.lineTo(FC.width/2-12,FC.height/2+17);
+  fx.fillStyle='rgba(201,168,76,0.9)';fx.fill();
+  filmGrain(fx,FC.width,FC.height,12);
+}
+// Video grid
+const vids=[
+  {t:"Midnight Rain — Full Session",d:"47:12",v:"2.1M",a:"3 days ago"},
+  {t:"Smoke & Saxophone Vol.3",d:"38:45",v:"890K",a:"1 week ago"},
+  {t:"The Last Light — Piano Solo",d:"22:18",v:"1.4M",a:"2 weeks ago"},
+  {t:"Noir Lounge — Late Night Mix",d:"1:12:04",v:"3.2M",a:"1 month ago"},
+  {t:"Cigarette Blues — Live Set",d:"54:30",v:"670K",a:"1 month ago"},
+  {t:"Between Shadows — Full Album",d:"58:22",v:"445K",a:"2 months ago"},
+  {t:"Window Light Jazz Session",d:"33:10",v:"1.1M",a:"2 months ago"},
+  {t:"After Hours — City Rooftop",d:"41:55",v:"780K",a:"3 months ago"}
+];
+const grid=document.getElementById('videoGrid');
+vids.forEach((v,i)=>{
+  const c=document.createElement('div');c.className='video-card';
+  c.innerHTML=`<div class="thumb-wrap"><canvas id="tc${i}" width="320" height="180"></canvas><div class="duration-badge">${v.d}</div></div><div class="vid-info"><h3>${v.t}</h3><div class="vmeta"><span>BLACK SMOKE JAZZ</span> · ${v.v} views · ${v.a}</div></div>`;
+  grid.appendChild(c);
+});
+const tcs=[],tSmokes=[];
+vids.forEach((_,i)=>{
+  const c=document.getElementById(`tc${i}`);
+  tcs.push(c.getContext('2d'));
+  tSmokes.push(makeSmoke(c.width*.28,c.height*.85,16));
+});
+// Shorts
+const shorts=['Smoke Ring','Midnight Eyes','Rain Window','Jazz Hands','Neon Sax'];
+const srow=document.getElementById('shortsRow');
+shorts.forEach((s,i)=>{
+  const c=document.createElement('div');c.className='short-card';
+  c.innerHTML=`<div class="short-thumb"><canvas id="sc${i}" width="180" height="320"></canvas></div><div class="short-info"><h4>${s}</h4></div>`;
+  srow.appendChild(c);
+});
+const scs=[],sSmokes=[];
+shorts.forEach((_,i)=>{
+  const c=document.getElementById(`sc${i}`);
+  scs.push(c.getContext('2d'));
+  sSmokes.push(makeSmoke(c.width*.4,c.height*.88,14));
+});
+function drawThumb(ctx,sm,w,h,t,off){
+  ctx.clearRect(0,0,w,h);drawNoirWoman(ctx,w,h,t+off);
+  updateSmoke(sm);drawSmoke(ctx,sm);filmGrain(ctx,w,h,10);
+}
+function drawShort(ctx,sm,w,h,t,off){
+  ctx.clearRect(0,0,w,h);
+  ctx.save();ctx.translate(w/2,h/2);ctx.scale(0.68,1.12);ctx.translate(-w/2,-h/2);
+  drawNoirWoman(ctx,w,h,t+off);ctx.restore();
+  updateSmoke(sm);drawSmoke(ctx,sm);
+  ctx.fillStyle='rgba(201,168,76,0.82)';ctx.font='bold 10px Segoe UI';ctx.textAlign='center';
+  ctx.fillText('BLACK SMOKE JAZZ',w/2,h-12);
+  filmGrain(ctx,w,h,9);
+}
+let T=0;
+function loop(){
+  T+=0.016;
+  drawBanner(T);drawFeat(T);
+  tcs.forEach((c,i)=>drawThumb(c,tSmokes[i],320,180,T,i*.65));
+  scs.forEach((c,i)=>drawShort(c,sSmokes[i],180,320,T,i*.85));
+  requestAnimationFrame(loop);
+}
 loop();
-</script></body></html>
+</script>
+</body>
+</html>
