@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Smoke Jazz - YouTube</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:14px;font-family:Roboto,Arial,sans-serif;background:#0f0f0f;color:#f1f1f1;-webkit-font-smoothing:antialiased}
+/* ─── TOPBAR ─── */
+.yt-topbar{height:56px;background:#0f0f0f;position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:0 16px;gap:16px;border-bottom:1px solid #272727}
+.yt-logo-wrap{display:flex;align-items:center;gap:2px;text-decoration:none}
+.yt-logo-icon{width:29px;height:20px;background:#ff0000;border-radius:4px;display:flex;align-items:center;justify-content:center}
+.yt-logo-icon::after{content:'▶';color:#fff;font-size:10px;margin-left:1px}
+.yt-logo-text{color:#f1f1f1;font-size:20px;font-weight:400;letter-spacing:-0.5px;margin-left:4px}
+.yt-search-wrap{flex:1;max-width:620px;margin:0 auto;display:flex;height:36px}
+.yt-search-input{flex:1;background:#121212;border:1px solid #303030;border-right:none;color:#f1f1f1;padding:0 16px;border-radius:40px 0 0 40px;font-size:16px;outline:none}
+.yt-search-input::placeholder{color:#717171}
+.yt-search-btn{background:#222;border:1px solid #303030;color:#f1f1f1;padding:0 20px;border-radius:0 40px 40px 0;cursor:pointer;font-size:18px;display:flex;align-items:center}
+.yt-topbar-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.yt-icon-btn{background:none;border:none;color:#f1f1f1;font-size:20px;cursor:pointer;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.yt-icon-btn:hover{background:#272727}
+/* ─── BANNER ─── */
+.yt-banner-wrap{width:100%;height:169px;overflow:hidden;background:#000;position:relative}
+#bannerCanvas{width:100%;height:169px;display:block}
+/* ─── CHANNEL HEADER ─── */
+.ch-header{max-width:1284px;margin:0 auto;padding:16px 24px 0;display:flex;gap:24px;align-items:flex-start}
+.ch-avatar-wrap{position:relative;margin-top:-24px;flex-shrink:0}
+#avatarCanvas{border-radius:50%;border:3px solid #0f0f0f;display:block;width:80px;height:80px}
+.ch-meta{flex:1}
+.ch-name{font-size:24px;font-weight:600;line-height:1.2;color:#f1f1f1;margin-bottom:4px}
+.ch-handle{font-size:14px;color:#aaa;margin-bottom:6px}
+.ch-stats{font-size:13px;color:#aaa;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.ch-stats span::after{content:'·';margin-left:8px}
+.ch-stats span:last-child::after{content:''}
+.ch-btns{display:flex;gap:8px}
+.btn-sub{background:#f1f1f1;color:#0f0f0f;border:none;padding:10px 16px;border-radius:20px;font-size:14px;font-weight:500;cursor:pointer}
+.btn-bell{background:#272727;color:#f1f1f1;border:none;padding:10px 14px;border-radius:20px;font-size:14px;cursor:pointer}
+/* ─── TABS ─── */
+.ch-tabs-wrap{position:sticky;top:56px;z-index:50;background:#0f0f0f;border-bottom:1px solid #272727;margin-top:12px}
+.ch-tabs{max-width:1284px;margin:0 auto;padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.ch-tabs::-webkit-scrollbar{display:none}
+.ch-tab{background:none;border:none;color:#aaa;font-size:14px;font-weight:500;padding:12px 16px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s}
+.ch-tab:hover{color:#f1f1f1}
+.ch-tab.active{color:#f1f1f1;border-bottom-color:#f1f1f1}
+/* ─── CONTENT ─── */
+.ch-content{max-width:1284px;margin:0 auto;padding:24px}
+/* ─── FEATURED VIDEO ─── */
+.featured-row{display:grid;grid-template-columns:640px 1fr;gap:20px;margin-bottom:32px;cursor:pointer}
+.feat-thumb{position:relative;border-radius:12px;overflow:hidden;background:#000}
+#featCanvas{display:block;width:640px;height:360px}
+.feat-duration{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.9);color:#fff;font-size:12px;font-weight:500;padding:2px 6px;border-radius:4px}
+.feat-info{padding:4px 0}
+.feat-title{font-size:18px;font-weight:500;line-height:1.3;color:#f1f1f1;margin-bottom:8px}
+.feat-meta{font-size:13px;color:#aaa;margin-bottom:8px}
+.feat-desc{font-size:13px;color:#aaa;line-height:1.5}
+/* ─── SECTION ─── */
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.sec-title{font-size:16px;font-weight:500;color:#f1f1f1}
+.sec-link{font-size:13px;color:#3ea6ff;cursor:pointer}
+/* ─── VIDEO GRID ─── */
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.vid-card{cursor:pointer}
+.vid-card:hover .vid-thumb canvas{transform:scale(1.02)}
+.vid-thumb{position:relative;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.vid-thumb canvas{width:100%;height:100%;display:block;transition:transform .2s}
+.vid-dur{position:absolute;bottom:4px;right:4px;background:rgba(0,0,0,.9);color:#fff;font-size:11px;font-weight:600;padding:2px 5px;border-radius:3px}
+.vid-info{display:grid;grid-template-columns:36px 1fr;gap:10px;padding:10px 0 4px}
+.vid-avatar{width:36px;height:36px;border-radius:50%;background:#272727;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#aaa;flex-shrink:0}
+.vid-text .vid-title{font-size:14px;font-weight:500;line-height:1.3;color:#f1f1f1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px}
+.vid-text .vid-ch{font-size:12px;color:#aaa}
+.vid-text .vid-views{font-size:12px;color:#aaa}
+/* ─── SHORTS ─── */
+.shorts-scroll{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px}
+.short-card{cursor:pointer}
+.short-thumb{position:relative;border-radius:12px;overflow:hidden;background:#000}
+.short-thumb canvas{display:block;width:100%;height:auto}
+.short-dur{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.85);color:#fff;font-size:11px;font-weight:600;padding:2px 5px;border-radius:3px}
+.short-title{font-size:13px;font-weight:500;color:#f1f1f1;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.short-views{font-size:12px;color:#aaa;margin-top:2px}
+/* ─── PLAYLISTS ─── */
+.playlist-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.pl-card{cursor:pointer;border-radius:12px;overflow:hidden;background:#1c1c1c}
+.pl-thumb{position:relative}
+.pl-thumb canvas{width:100%;display:block}
+.pl-count{position:absolute;bottom:0;right:0;background:rgba(0,0,0,.85);color:#fff;font-size:13px;padding:6px 12px;width:100%;text-align:center;font-weight:500}
+.pl-info{padding:12px}
+.pl-info h3{font-size:14px;font-weight:500;color:#f1f1f1;margin-bottom:4px}
+.pl-info p{font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<!-- ═══ TOPBAR ═══ -->
+<div class="yt-topbar">
+  <a class="yt-logo-wrap" href="#">
+    <div class="yt-logo-icon"></div>
+    <span class="yt-logo-text">YouTube</span>
+  </a>
+  <div class="yt-search-wrap">
+    <input class="yt-search-input" type="text" placeholder="Search">
+    <button class="yt-search-btn">🔍</button>
+  </div>
+  <div class="yt-topbar-right">
+    <button class="yt-icon-btn">⋮</button>
+    <button class="yt-icon-btn">🔔</button>
+    <button class="yt-icon-btn" style="background:#c9a84c;color:#0f0f0f;font-size:13px;font-weight:700">M</button>
+  </div>
+</div>
+
+<!-- ═══ CHANNEL BANNER ═══ -->
+<div class="yt-banner-wrap">
+  <canvas id="bannerCanvas" width="2560" height="423"></canvas>
+</div>
+
+<!-- ═══ CHANNEL HEADER ═══ -->
+<div class="ch-header">
+  <div class="ch-avatar-wrap">
+    <canvas id="avatarCanvas" width="160" height="160"></canvas>
+  </div>
+  <div class="ch-meta">
+    <div class="ch-name">Black Smoke Jazz</div>
+    <div class="ch-handle">@blacksmokejazz · 128K subscribers · 87 videos</div>
+    <div class="ch-stats">
+      <span>Jazz Atmosphere</span>
+      <span>Noir Lounge Music</span>
+      <span>Late Night Jazz</span>
+    </div>
+    <div class="ch-btns">
+      <button class="btn-sub">Subscribe</button>
+      <button class="btn-bell">🔔</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TABS ═══ -->
+<div class="ch-tabs-wrap">
+  <div class="ch-tabs">
+    <button class="ch-tab active">Home</button>
+    <button class="ch-tab">Videos</button>
+    <button class="ch-tab">Shorts</button>
+    <button class="ch-tab">Live</button>
+    <button class="ch-tab">Playlists</button>
+    <button class="ch-tab">Community</button>
+    <button class="ch-tab">About</button>
+  </div>
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="ch-content">
+
+  <!-- FEATURED VIDEO -->
+  <div class="sec-header"><div class="sec-title">Featured</div></div>
+  <div class="featured-row">
+    <div class="feat-thumb">
+      <canvas id="featCanvas" width="1280" height="720"></canvas>
+      <div class="feat-duration">1:02:18</div>
+    </div>
+    <div class="feat-info">
+      <div class="feat-title">Midnight Rain & Jazz — Late Night Atmosphere with Cigarette Smoke</div>
+      <div class="feat-meta">Black Smoke Jazz · 2.1M views · 3 days ago</div>
+      <div class="feat-desc">The rain falls soft against the glass. Jazz breathes in the dark. A cigarette burns slow, tracing smoke through window light. No distractions. Just the night.</div>
+    </div>
+  </div>
+
+  <!-- LATEST VIDEOS -->
+  <div class="sec-header">
+    <div class="sec-title">Latest videos</div>
+    <div class="sec-link">View all →</div>
+  </div>
+  <div class="video-grid" id="mainGrid"></div>
+
+  <!-- SHORTS -->
+  <div class="sec-header">
+    <div class="sec-title">Shorts</div>
+    <div class="sec-link">View all →</div>
+  </div>
+  <div class="shorts-scroll" id="shortsGrid"></div>
+
+  <!-- PLAYLISTS -->
+  <div class="sec-header">
+    <div class="sec-title">Playlists</div>
+    <div class="sec-link">View all →</div>
+  </div>
+  <div class="playlist-row" id="playlistGrid"></div>
+
+</div>
+<script>
+// ══════════════════════════════════════════════
+//  BLACK SMOKE JAZZ — YouTube Channel Renderer
+//  Realistic thumbnail system with noir aesthetics
+// ══════════════════════════════════════════════
+
+// Utility: draw photorealistic night city background
+function drawNightCity(ctx, w, h, seed) {
+  const r = (n) => { seed = (seed * 1664525 + 1013904223) & 0xffffffff; return (seed >>> 0) / 0xffffffff; };
+  // Deep night sky gradient
+  const sky = ctx.createLinearGradient(0, 0, 0, h);
+  sky.addColorStop(0, '#05070f');
+  sky.addColorStop(0.4, '#0a0d1a');
+  sky.addColorStop(0.65, '#0f1422');
+  sky.addColorStop(1, '#000000');
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, w, h);
+  // Distant building silhouettes
+  ctx.fillStyle = '#050810';
+  for (let i = 0; i < 18; i++) {
+    const bx = (r() * 1.2 - 0.1) * w;
+    const bh = (0.08 + r() * 0.22) * h;
+    const bw = (0.025 + r() * 0.055) * w;
+    ctx.fillRect(bx, h - bh, bw, bh);
+  }
+  // Building windows
+  for (let i = 0; i < 80; i++) {
+    const wx = r() * w, wy = h * 0.55 + r() * h * 0.35;
+    const ws = 2 + r() * 3;
+    const on = r() > 0.35;
+    if (on) {
+      ctx.fillStyle = `rgba(${200 + r()*55},${180 + r()*60},${100 + r()*80},${0.4 + r()*0.5})`;
+      ctx.fillRect(wx, wy, ws, ws * 1.4);
+    }
+  }
+  // Rain streaks
+  ctx.strokeStyle = 'rgba(150,170,200,0.08)';
+  ctx.lineWidth = 0.8;
+  for (let i = 0; i < 60; i++) {
+    const rx = r() * w, ry = r() * h;
+    ctx.beginPath();
+    ctx.moveTo(rx, ry);
+    ctx.lineTo(rx + 4, ry + 18);
+    ctx.stroke();
+  }
+  // Bokeh city lights
+  for (let i = 0; i < 22; i++) {
+    const bx = r() * w, by = h * 0.5 + r() * h * 0.45;
+    const br = 8 + r() * 18;
+    const colors = ['255,160,30','200,220,255','255,80,80','100,200,255','255,200,100'];
+    const col = colors[Math.floor(r() * colors.length)];
+    const g = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+    g.addColorStop(0, `rgba(${col},${0.18 + r()*0.12})`);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(bx, by, br, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+// Draw jazz window interior scene
+function drawJazzInterior(ctx, w, h, seed) {
+  const r = () => { seed = (seed * 1664525 + 1013904223) & 0xffffffff; return (seed >>> 0) / 0xffffffff; };
+  // Dark interior
+  ctx.fillStyle = '#080808';
+  ctx.fillRect(0, 0, w, h);
+  // Window with night view behind
+  const wx = w * 0.42, wy = h * 0.03, ww = w * 0.54, wh = h * 0.82;
+  // Window glow
+  const wg = ctx.createRadialGradient(wx + ww/2, wy + wh/2, 0, wx + ww/2, wy + wh/2, ww * 0.7);
+  wg.addColorStop(0, 'rgba(20,30,60,0.95)');
+  wg.addColorStop(1, 'rgba(5,8,20,0.98)');
+  ctx.fillStyle = wg;
+  ctx.fillRect(wx, wy, ww, wh);
+  // Window grid lines
+  ctx.strokeStyle = 'rgba(80,90,110,0.5)';
+  ctx.lineWidth = 2;
+  const cols = 4, rows = 3;
+  for (let c = 0; c <= cols; c++) {
+    ctx.beginPath();
+    ctx.moveTo(wx + c * ww/cols, wy);
+    ctx.lineTo(wx + c * ww/cols, wy + wh);
+    ctx.stroke();
+  }
+  for (let row = 0; row <= rows; row++) {
+    ctx.beginPath();
+    ctx.moveTo(wx, wy + row * wh/rows);
+    ctx.lineTo(wx + ww, wy + row * wh/rows);
+    ctx.stroke();
+  }
+  // Night city through window (muted)
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(wx + 2, wy + 2, ww - 4, wh - 4);
+  ctx.clip();
+  drawNightCity(ctx, w, h, seed + 1000);
+  ctx.fillStyle = 'rgba(0,0,0,0.55)';
+  ctx.fillRect(wx, wy, ww, wh);
+  ctx.restore();
+  // Warm left-side lamp glow
+  const lampG = ctx.createRadialGradient(w * 0.08, h * 0.25, 0, w * 0.08, h * 0.25, w * 0.45);
+  lampG.addColorStop(0, 'rgba(255,200,100,0.12)');
+  lampG.addColorStop(0.5, 'rgba(200,140,50,0.06)');
+  lampG.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = lampG;
+  ctx.fillRect(0, 0, w, h);
+}
+
+// Draw text overlay on thumbnail
+function drawThumbText(ctx, w, h, title, views, dur) {
+  // Gradient scrim at bottom
+  const scrim = ctx.createLinearGradient(0, h*0.55, 0, h);
+  scrim.addColorStop(0, 'rgba(0,0,0,0)');
+  scrim.addColorStop(1, 'rgba(0,0,0,0.82)');
+  ctx.fillStyle = scrim;
+  ctx.fillRect(0, 0, w, h);
+  // Channel watermark
+  ctx.save();
+  ctx.fillStyle = 'rgba(201,168,76,0.85)';
+  ctx.font = `bold ${Math.max(8, w*0.028)}px Arial,sans-serif`;
+  ctx.textAlign = 'left';
+  ctx.fillText('BLACK SMOKE JAZZ', w*0.03, h*0.94);
+  ctx.restore();
+}
+
+// Draw smoke particles system
+class Smoke {
+  constructor(ox, oy, n, w, h) {
+    this.particles = Array.from({length: n}, () => this.make(ox, oy, w, h, Math.random()));
+    this.ox = ox; this.oy = oy; this.W = w; this.H = h;
+  }
+  make(ox, oy, w, h, life) {
+    return {
+      x: ox + (Math.random()-.5)*12, y: oy,
+      vx: (Math.random()-.5)*.5, vy: -(0.3+Math.random()*.7),
+      r: 5+Math.random()*10, life, maxLife: 4+Math.random()*3,
+      a: 0.08+Math.random()*0.12
+    };
+  }
+  update() {
+    this.particles.forEach(p => {
+      p.life += 0.016;
+      p.x += p.vx + Math.sin(p.life*2.1)*.4;
+      p.y += p.vy; p.r += .06;
+      if(p.life >= p.maxLife) Object.assign(p, this.make(this.ox, this.oy, this.W, this.H, 0));
+    });
+  }
+  draw(ctx) {
+    this.particles.forEach(p => {
+      const prog = p.life/p.maxLife;
+      const a = p.a * (1-prog) * Math.min(prog*4, 1);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(160,160,160,${a})`;
+      ctx.fill();
+    });
+  }
+}
+
+// Film grain
+function grain(ctx, w, h, intensity) {
+  const id = ctx.getImageData(0, 0, w, h), d = id.data;
+  for(let i=0;i<d.length;i+=4) {
+    const n=(Math.random()-.5)*intensity;
+    d[i]=Math.max(0,Math.min(255,d[i]+n));
+    d[i+1]=Math.max(0,Math.min(255,d[i+1]+n));
+    d[i+2]=Math.max(0,Math.min(255,d[i+2]+n));
+  }
+  ctx.putImageData(id,0,0);
+}
+
+// ═══ VIDEO DATA ═══
+const VIDEOS = [
+  {id:'v1',title:'Midnight Rain & Jazz — Slow Cigarette Night',views:'2.1M views',age:'3 days ago',dur:'1:02:18',seed:101},
+  {id:'v2',title:'Rainy Night Jazz Bar — Smooth Piano at 2 AM',views:'890K views',age:'1 week ago',dur:'58:44',seed:202},
+  {id:'v3',title:'Late Night Saxophone & City Rain — After Hours',views:'1.4M views',age:'2 weeks ago',dur:'47:33',seed:303},
+  {id:'v4',title:'Noir Jazz Lounge — Dark Piano Sessions Vol.4',views:'3.2M views',age:'1 month ago',dur:'1:14:07',seed:404},
+  {id:'v5',title:'Lonely Night Jazz — Cigarette & Window Rain',views:'670K views',age:'1 month ago',dur:'54:20',seed:505},
+  {id:'v6',title:'After Midnight — Slow Jazz for Insomniacs',views:'445K views',age:'2 months ago',dur:'1:08:55',seed:606},
+  {id:'v7',title:'Jazz Bar in the Rain — Moody Night Atmosphere',views:'1.1M views',age:'2 months ago',dur:'43:10',seed:707},
+  {id:'v8',title:'Deep Night Jazz — Blue Hour City Sounds',views:'780K views',age:'3 months ago',dur:'52:05',seed:808},
+];
+
+const SHORTS = [
+  {title:'Smoke & Sax',views:'1.2M',dur:'0:58',seed:11},
+  {title:'Midnight Rain Drop',views:'890K',dur:'0:45',seed:22},
+  {title:'Night Window',views:'2.1M',dur:'0:52',seed:33},
+  {title:'After Hours',views:'560K',dur:'1:00',seed:44},
+  {title:'Ember & Jazz',views:'340K',dur:'0:47',seed:55},
+];
+
+const PLAYLISTS = [
+  {title:'Midnight Sessions',desc:'Slow jazz for the late hours',count:'12 videos',seed:1001},
+  {title:'Rain & Piano',desc:'When rain meets jazz piano',count:'8 videos',seed:1002},
+  {title:'Noir Lounge',desc:'Dark atmosphere jazz collection',count:'15 videos',seed:1003},
+];
+
+// ═══ BUILD DOM ═══
+const mainGrid = document.getElementById('mainGrid');
+VIDEOS.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'vid-card';
+  card.innerHTML = `<div class="vid-thumb"><canvas id="${v.id}" width="320" height="180"></canvas><div class="vid-dur">${v.dur}</div></div><div class="vid-info"><div class="vid-avatar">BSJ</div><div class="vid-text"><div class="vid-title">${v.title}</div><div class="vid-ch">Black Smoke Jazz</div><div class="vid-views">${v.views} · ${v.age}</div></div></div>`;
+  mainGrid.appendChild(card);
+});
+
+const shortsGrid = document.getElementById('shortsGrid');
+SHORTS.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'short-card';
+  card.innerHTML = `<div class="short-thumb"><canvas id="s${s.seed}" width="225" height="400"></canvas><div class="short-dur">${s.dur}</div></div><div class="short-title">${s.title}</div><div class="short-views">${s.views} views</div>`;
+  shortsGrid.appendChild(card);
+});
+
+const plGrid = document.getElementById('playlistGrid');
+PLAYLISTS.forEach(pl => {
+  const card = document.createElement('div');
+  card.className = 'pl-card';
+  card.innerHTML = `<div class="pl-thumb"><canvas id="pl${pl.seed}" width="480" height="270"></canvas><div class="pl-count">▶ ${pl.count}</div></div><div class="pl-info"><h3>${pl.title}</h3><p>${pl.desc}</p></div>`;
+  plGrid.appendChild(card);
+});
+
+// ═══ SMOKE SYSTEMS ═══
+const bannerC = document.getElementById('bannerCanvas');
+const bCtx = bannerC.getContext('2d');
+const bannerSmoke = new Smoke(bannerC.width*.28, bannerC.height*.78, 55, bannerC.width, bannerC.height);
+
+const featC = document.getElementById('featCanvas');
+const fCtx = featC.getContext('2d');
+const featSmoke = new Smoke(featC.width*.26, featC.height*.82, 38, featC.width, featC.height);
+
+// thumbnail smokes
+const vidSmokes = {};
+VIDEOS.forEach(v => {
+  const c = document.getElementById(v.id);
+  vidSmokes[v.id] = new Smoke(c.width*.28, c.height*.84, 22, c.width, c.height);
+});
+
+const shortSmokes = {};
+SHORTS.forEach(s => {
+  const c = document.getElementById('s'+s.seed);
+  shortSmokes['s'+s.seed] = new Smoke(c.width*.35, c.height*.88, 16, c.width, c.height);
+});
+
+// ═══ AVATAR ═══
+const avC = document.getElementById('avatarCanvas');
+const avX = avC.getContext('2d');
+avX.fillStyle = '#111';
+avX.beginPath(); avX.arc(80,80,80,0,Math.PI*2); avX.fill();
+const avG = avX.createLinearGradient(0,0,160,160);
+avG.addColorStop(0,'#1a1a1a'); avG.addColorStop(1,'#0a0a0a');
+avX.fillStyle = avG;
+avX.beginPath(); avX.arc(80,80,78,0,Math.PI*2); avX.fill();
+avX.fillStyle = '#c9a84c';
+avX.font = 'bold 36px Georgia,serif';
+avX.textAlign = 'center';
+avX.textBaseline = 'middle';
+avX.fillText('BSJ', 80, 80);
+avX.strokeStyle = 'rgba(201,168,76,0.4)';
+avX.lineWidth = 2;
+avX.beginPath(); avX.arc(80,80,76,0,Math.PI*2); avX.stroke();
+
+// ═══ DRAW FUNCTIONS ═══
+function drawBanner(t) {
+  const w = bannerC.width, h = bannerC.height;
+  bCtx.clearRect(0,0,w,h);
+  drawJazzInterior(bCtx, w, h, 9999);
+  bannerSmoke.update(); bannerSmoke.draw(bCtx);
+  // Title text
+  bCtx.save();
+  const titleSize = Math.floor(h * 0.16);
+  bCtx.font = `900 ${titleSize}px Georgia,serif`;
+  bCtx.textAlign = 'left';
+  // Gold shadow
+  bCtx.shadowColor = 'rgba(201,168,76,0.3)';
+  bCtx.shadowBlur = 20;
+  bCtx.fillStyle = '#c9a84c';
+  bCtx.fillText('Black Smoke Jazz', w*0.04, h*0.45);
+  bCtx.shadowBlur = 0;
+  // Tagline
+  bCtx.font = `400 ${Math.floor(h*.065)}px Roboto,Arial,sans-serif`;
+  bCtx.fillStyle = 'rgba(255,255,255,0.7)';
+  bCtx.fillText('Late Night Jazz · Noir Atmosphere · Slow Sessions', w*0.04, h*0.6);
+  // Decorative line
+  bCtx.strokeStyle = '#c9a84c';
+  bCtx.lineWidth = 3;
+  bCtx.beginPath();
+  bCtx.moveTo(w*0.04, h*0.5);
+  bCtx.lineTo(w*0.04 + Math.min(w*0.35, 700), h*0.5);
+  bCtx.stroke();
+  bCtx.restore();
+  grain(bCtx, w, h, 14);
+}
+
+function drawFeatured(t) {
+  const w = featC.width, h = featC.height;
+  fCtx.clearRect(0,0,w,h);
+  drawJazzInterior(fCtx, w, h, 5555);
+  featSmoke.update(); featSmoke.draw(fCtx);
+  // Candle/ember on left
+  fCtx.beginPath();
+  fCtx.arc(w*0.12, h*0.7, 4, 0, Math.PI*2);
+  fCtx.fillStyle = `rgba(255,130,30,${0.7+0.3*Math.sin(t*3)})`;
+  fCtx.fill();
+  const candleG = fCtx.createRadialGradient(w*0.12, h*0.7, 0, w*0.12, h*0.7, 60);
+  candleG.addColorStop(0, `rgba(255,150,50,${0.12+0.05*Math.sin(t*2)})`);
+  candleG.addColorStop(1, 'rgba(0,0,0,0)');
+  fCtx.fillStyle = candleG;
+  fCtx.beginPath(); fCtx.arc(w*0.12, h*0.7, 60, 0, Math.PI*2); fCtx.fill();
+  drawThumbText(fCtx, w, h);
+  grain(fCtx, w, h, 12);
+}
+
+function drawVideo(v, t, animOffset) {
+  const c = document.getElementById(v.id);
+  const ctx = c.getContext('2d');
+  const w = c.width, h = c.height;
+  ctx.clearRect(0,0,w,h);
+  drawJazzInterior(ctx, w, h, v.seed);
+  vidSmokes[v.id].update(); vidSmokes[v.id].draw(ctx);
+  // Subtle ember glow varies per video
+  const ex = w*(0.1 + (v.seed%7)*0.08), ey = h*0.72;
+  ctx.beginPath(); ctx.arc(ex, ey, 3, 0, Math.PI*2);
+  ctx.fillStyle = `rgba(255,120,30,${0.5+0.4*Math.sin(t*2.5+animOffset)})`;
+  ctx.fill();
+  drawThumbText(ctx, w, h, v.title, v.views, v.dur);
+  grain(ctx, w, h, 10);
+}
+
+function drawShort(s, t) {
+  const id = 's'+s.seed;
+  const c = document.getElementById(id);
+  const ctx = c.getContext('2d');
+  const w = c.width, h = c.height;
+  ctx.clearRect(0,0,w,h);
+  // Vertical night scene
+  drawNightCity(ctx, w, h, s.seed);
+  // Dark overlay
+  ctx.fillStyle = 'rgba(0,0,0,0.45)';
+  ctx.fillRect(0,0,w,h);
+  shortSmokes[id].update(); shortSmokes[id].draw(ctx);
+  // Title at bottom
+  const scrim = ctx.createLinearGradient(0, h*0.6, 0, h);
+  scrim.addColorStop(0,'rgba(0,0,0,0)');
+  scrim.addColorStop(1,'rgba(0,0,0,0.9)');
+  ctx.fillStyle=scrim; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#f1f1f1';
+  ctx.font=`bold ${Math.floor(w*0.078)}px Roboto,Arial`;
+  ctx.textAlign='center';
+  ctx.fillText(s.title, w/2, h*0.88);
+  ctx.fillStyle='rgba(201,168,76,0.9)';
+  ctx.font=`${Math.floor(w*0.055)}px Roboto,Arial`;
+  ctx.fillText('Black Smoke Jazz', w/2, h*0.94);
+  grain(ctx, w, h, 9);
+}
+
+function drawPlaylist(pl) {
+  const id='pl'+pl.seed;
+  const c=document.getElementById(id);
+  const ctx=c.getContext('2d');
+  const w=c.width,h=c.height;
+  drawJazzInterior(ctx,w,h,pl.seed);
+  // Stack effect overlay
+  ctx.fillStyle='rgba(0,0,0,0.3)';ctx.fillRect(0,0,w,h);
+  // Stack lines
+  ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=2;
+  for(let i=1;i<=3;i++){ctx.beginPath();ctx.moveTo(0,h-i*8);ctx.lineTo(w,h-i*8);ctx.stroke();}
+  grain(ctx,w,h,10);
+}
+
+// ═══ ANIMATION LOOP ═══
+let animT = 0;
+function loop() {
+  animT += 0.016;
+  drawBanner(animT);
+  drawFeatured(animT);
+  VIDEOS.forEach((v, i) => drawVideo(v, animT, i * 0.7));
+  SHORTS.forEach(s => drawShort(s, animT));
+  PLAYLISTS.forEach(pl => drawPlaylist(pl));
+  requestAnimationFrame(loop);
+}
+
+// Init playlists (static)
+PLAYLISTS.forEach(pl => drawPlaylist(pl));
+loop();
+</script>
+</body>
+</html>
